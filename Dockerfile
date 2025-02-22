@@ -1,11 +1,12 @@
-# Используем готовый образ Wiki.js
 FROM ghcr.io/requarks/wiki:2
 
-MAINTAINER Pterodactyl Software, <support@pterodactyl.io>
+# Переключаемся на root
+USER root
 
-# Создаём пользователя container (обязательно для Pterodactyl)
+# Устанавливаем зависимости (если нужно) и создаем пользователя container
 RUN adduser --disabled-password --home /home/container container
 
+# Возвращаемся к пользователю container
 USER container
 ENV USER=container HOME=/home/container
 
